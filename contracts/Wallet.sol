@@ -1,6 +1,6 @@
 pragma solidity ^0.4.25;
 
-import "browser/Channel.sol";
+import "./Channel.sol";
 
 contract Wallet{
  
