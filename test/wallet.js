@@ -21,7 +21,7 @@ contract('wallet', function(accounts) {
       wal = instance;
       return wal.getChannel.call('test');
     }).then(function(name) {
-      assert.equal( name, '123',"Uninitialized or incorrects");
+      assert.notEqual(name, 'test',"Initialized incorrectly");
     });
   });
   
