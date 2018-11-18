@@ -16,6 +16,7 @@ contract Wallet{
 	
     struct Channel0 {
         Channel channel_ref;
+		string _name;
         address _from;   // local address
         address _to;
         uint startDate;
@@ -51,9 +52,10 @@ contract Wallet{
 //       if (msg.sender != chairperson || voters[toVoter].voted) return;
 //        voters[toVoter].weight = 1;
 //    }
-    function openChannel(address _with,uint _channelTimeout){
+    function openChannel(address _with,uint _channelTimeout,string _name){
        channelUser storage openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
-        Channel0 storage newChannel = openUser.channels[_with];
+        Channel0 storage newChannel = openUser.channels[_name];
+		newChannel._name=_name;
         newChannel._from=msg.sender;
         newChannel._to=_with;
         newChannel.startDate=now;
