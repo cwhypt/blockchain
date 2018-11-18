@@ -11,8 +11,8 @@ contract Channel {
 	mapping (bytes32 => address) signatures;
 	
 	function Channel() payable {   //address to, uint timeout
-		  //for testing   channelRecipient = to;
-		//channelSender = msg.sender;
+		  //for testing   _to = to;
+		//_from = msg.sender;
 		//startDate = now;
 		//channelTimeout = timeout;
 	}
@@ -26,7 +26,7 @@ contract Channel {
 		signer = ecrecover(h, v, r, s);
 
 		// signature is invalid, throw
-		if (signer != channelSender && signer != channelRecipient) throw;
+		if (signer != _from && signer != _to) throw;
 
 		proof = sha3(this, value);
 
@@ -37,8 +37,8 @@ contract Channel {
 			signatures[proof] = signer;
 		else if (signatures[proof] != signer){
 			// channel completed, both signatures provided
-			if (!channelRecipient.send(value)) throw;
-			selfdestruct(channelSender);
+			if (!_to.send(value)) throw;
+			selfdestruct(_from);
 		}
 
 	}
@@ -47,7 +47,7 @@ contract Channel {
 		if (startDate + channelTimeout > now)
 			throw;
 
-		selfdestruct(channelSender);
+		selfdestruct(_from);
 	}
 
 }
