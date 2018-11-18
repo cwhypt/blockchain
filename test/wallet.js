@@ -25,7 +25,7 @@ contract('wallet', function(accounts) {
     });
   });
   
-  it("Start second and third account", function() {
+  it("Start two and three account", function() {
     var wal;
 
     return wallet.deployed().then(function(instance) {
@@ -38,4 +38,22 @@ contract('wallet', function(accounts) {
       assert.equal(balance, 10,"Initialized incorrectly");
     });
   });  
+  
+    it("Open channel between zero and one", function() {
+    var wal;
+
+    return wallet.deployed().then(function(instance) {
+      wal = instance;
+      return wal.openChannel(accounts[1],1000,'gasPay',{from: accounts[0]});
+    }).then(function() {
+		var user=User[accounts[0]];
+		var chan=user.channels['gasPay'];
+	  return chan.value;
+    }).then(function(balance) {
+      assert.equal(balance, 123,"Initialized incorrectly");
+    });
+  });  
+  
+  
+  
 });

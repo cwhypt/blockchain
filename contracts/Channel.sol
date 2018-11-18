@@ -1,17 +1,19 @@
 pragma solidity ^0.4.24;
 
 contract Channel {
+	string _name;
+    address public _from;   // local address
+    address[] public _to;
+    uint startDate;
+	uint channelTimeout;
+	uint value; //accumulated value to be sent
 
-	address public channelSender;
-	address public channelRecipient;
-	uint public startDate;
-	uint public channelTimeout;
 	mapping (bytes32 => address) signatures;
-
+	
 	function Channel() payable {   //address to, uint timeout
 		  //for testing   channelRecipient = to;
-		channelSender = msg.sender;
-		startDate = now;
+		//channelSender = msg.sender;
+		//startDate = now;
 		//channelTimeout = timeout;
 	}
 

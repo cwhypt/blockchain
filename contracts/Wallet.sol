@@ -10,19 +10,9 @@ contract Wallet{
     struct channelUser {
         address wallet; // person delegated to
         uint value;
-        mapping (string => Channel0) channels;
+        mapping (string => Channel) channels;
     }
 
-	
-    struct Channel0 {
-        Channel channel_ref;
-		string _name;
-        address _from;   // local address
-        address _to;
-        uint startDate;
-	    uint channelTimeout;
-	    uint value; //accumulated value to be sent
-    }
 
     function Wallet() public {  //uint8 _numProposals
         moderator = msg.sender;
@@ -30,7 +20,7 @@ contract Wallet{
         User[moderator].value = 100;
     }
     
-	function initiateUser() public{
+	function initiateUser() public view returns(){
         channelUser storage sendUser=User[msg.sender];
         sendUser.value=10;   //maybe initiate is not useful; exist when called
         
@@ -52,9 +42,9 @@ contract Wallet{
 //       if (msg.sender != chairperson || voters[toVoter].voted) return;
 //        voters[toVoter].weight = 1;
 //    }
-    function openChannel(address _with,uint _channelTimeout,string _name){
+    function openChannel(address _with,uint _channelTimeout,string _name) payable {
        channelUser storage openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
-        Channel0 storage newChannel = openUser.channels[_name];
+        Channel storage newChannel = openUser.channels[_name];
 		newChannel._name=_name;
         newChannel._from=msg.sender;
         newChannel._to=_with;
