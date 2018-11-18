@@ -20,7 +20,9 @@ contract('wallet', function(accounts) {
     return wallet.deployed().then(function(instance) {
       wal = instance;
       return wal.getChannel.call('test');
-    });
+    }).then(function(name) {
+      assert.equal('test', name, "Uninitialized or incorrects");
+    });;
   });
   
   
