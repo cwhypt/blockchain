@@ -28,7 +28,7 @@ contract Wallet{
         User[moderator].value = 100;
     }
     
-	function getValue(address _from) public {  
+	function getValue(address _from) public view returns(uint) {  
         return User[_from].value;
     }
     
