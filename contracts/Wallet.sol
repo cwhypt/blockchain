@@ -43,9 +43,9 @@ contract Wallet{
         return User[_from].value;
     }
 	
-    function getChannel(string _name) public view returns(address) {  
+    function getChannel(string _name) public view returns(string) {  
 		channelUser user=User[msg.sender];
-        return user.channels[_name];
+        return (user.channels[_name])._name;
     }
 
 //    function giveRightToVote(address toVoter) public {
