@@ -8,11 +8,11 @@ contract Channel {
 	uint public channelTimeout;
 	mapping (bytes32 => address) signatures;
 
-	function Channel(address to, uint timeout) payable {
-		channelRecipient = to;
+	function Channel() payable {   //address to, uint timeout
+		  //for testing   channelRecipient = to;
 		channelSender = msg.sender;
 		startDate = now;
-		channelTimeout = timeout;
+		//channelTimeout = timeout;
 	}
 
 	function CloseChannel(bytes32 h, uint8 v, bytes32 r, bytes32 s, uint value){
