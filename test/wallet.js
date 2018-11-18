@@ -25,5 +25,17 @@ contract('wallet', function(accounts) {
     });
   });
   
-  
+  it("Start second and third account", function() {
+    var wal;
+
+    return wallet.deployed().then(function(instance) {
+      wal = instance;
+      return wal.initiateUser({from: accounts[1]});
+    }).then(function() {
+      wal.initiateUser({from: accounts[2]});
+	  return wal.getValue.call(accounts[1]);
+    }).then(function(balance) {
+      assert.equal(balance, 10,"Initialized incorrectly");
+    });
+  });  
 });
