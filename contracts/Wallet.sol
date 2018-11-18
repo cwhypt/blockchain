@@ -43,8 +43,8 @@ contract Wallet{
 //        voters[toVoter].weight = 1;
 //    }
     function openChannel(address _with,uint _channelTimeout,string _name) payable {
-       channelUser storage openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
-        Channel storage newChannel = openUser.channels[_name];
+       channelUser openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
+        Channel newChannel = openUser.channels[_name];
 		newChannel._name=_name;
         newChannel._from=msg.sender;
         newChannel._to=_with;
