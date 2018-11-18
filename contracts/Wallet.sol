@@ -20,7 +20,7 @@ contract Wallet{
         User[moderator].value = 100;
     }
     
-	function initiateUser() public view returns(){
+	function initiateUser() public view {
         channelUser storage sendUser=User[msg.sender];
         sendUser.value=10;   //maybe initiate is not useful; exist when called
         
@@ -50,7 +50,7 @@ contract Wallet{
         newChannel._to=_with;
         newChannel.startDate=now;
         newChannel.channelTimeout=_channelTimeout;
-        newChannel.value=0;   
+        newChannel.value=123;   
     //function setFeed(InfoFeed addr) public { feed = addr; }
     //function callFeed() public { feed.info.value(10).gas(800)(); }
         
