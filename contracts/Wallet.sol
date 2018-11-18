@@ -4,12 +4,16 @@ import "./Channel.sol";
 
 contract Wallet{
  
+    address public moderator;
+    mapping (address => channelUser) User;
+ 
     struct channelUser {
         address wallet; // person delegated to
         uint value;
-        mapping (address => Channel0) channelIndex;
+        mapping (string => Channel0) channels;
     }
 
+	
     struct Channel0 {
         Channel channel_ref;
         address _from;   // local address
@@ -19,24 +23,30 @@ contract Wallet{
 	    uint value; //accumulated value to be sent
     }
 
-    address public moderator;
-    mapping (address => channelUser) User;
- 
     function Wallet() public {  //uint8 _numProposals
         moderator = msg.sender;
         User[moderator].wallet = msg.sender;
         User[moderator].value = 100;
     }
     
-	function getValue(address _from) public view returns(uint) {  
-        return User[_from].value;
-    }
-    
-    function initiateUser() public{
+	function initiateUser() public{
         channelUser storage sendUser=User[msg.sender];
         sendUser.value=10;   //maybe initiate is not useful; exist when called
         
     }
+	
+	
+	
+	
+	function getValue(address _from) public view returns(uint) {  
+        return User[_from].value;
+    }
+	
+    function getChannel(string _name) public view returns(address) {  
+		channelUser user=User[msg.sender];
+        return user.channels[_name];
+    }
+
 //    function giveRightToVote(address toVoter) public {
 //       if (msg.sender != chairperson || voters[toVoter].voted) return;
 //        voters[toVoter].weight = 1;

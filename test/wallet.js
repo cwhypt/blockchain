@@ -19,7 +19,7 @@ contract('wallet', function(accounts) {
 
     return wallet.deployed().then(function(instance) {
       wal = instance;
-      return wal.getChannel.call(accounts[0]);
+      return wal.getChannel.call('test');
     });
   });
   
