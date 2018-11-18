@@ -28,6 +28,10 @@ contract Wallet{
         User[moderator].value = 100;
     }
     
+	function getValue(address _from) public {  
+        return User[_from].value;
+    }
+    
     function initiateUser() public{
         channelUser storage sendUser=User[msg.sender];
         sendUser.value=10;   //maybe initiate is not useful; exist when called
