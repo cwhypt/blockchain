@@ -25,7 +25,7 @@ contract('wallet', function(accounts) {
       wal.initiateUser({from: accounts[2]});
 	  return wal.getValue.call(accounts[1]);
     }).then(function(balance) {
-      assert.equal(balance, 10,"Initialized incorrectly");
+      assert.equal(balance。valueOf(), 10,"Initialized incorrectly");
     });
   });  
   
