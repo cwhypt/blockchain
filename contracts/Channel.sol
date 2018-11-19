@@ -14,7 +14,7 @@ contract Channel {
 			return name;
 	}
 	
-	function Channel() payable { 
+	function Channel()  { 
 		//
 		name='undef';
 		to[0] = msg.sender;
