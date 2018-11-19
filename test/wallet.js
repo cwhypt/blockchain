@@ -36,7 +36,7 @@ contract('wallet', function(accounts) {
       wal = instance;
       return wal.openChannel(accounts[1],1000,'gasPay',{from: accounts[0]});
     }).then(function(string) {
-      assert.equal(balance, 'name',"Initialized incorrectly");
+      assert.equal(string, 'name',"Initialized incorrectly");
     });
   });  
   
