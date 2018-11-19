@@ -23,7 +23,7 @@ contract('wallet', function(accounts) {
       return wal.initiateUser({from: accounts[1]});
     }).then(function() {
       wal.initiateUser({from: accounts[2]});
-	  return wal.getValue.call(accounts[0]);
+	  return wal.getValue.call(accounts[1]);
     }).then(function(balance) {
       assert.equal(balance.valueOf(), 10,"Initialized incorrectly");
     });
@@ -35,12 +35,8 @@ contract('wallet', function(accounts) {
     return wallet.deployed().then(function(instance) {
       wal = instance;
       return wal.openChannel(accounts[1],1000,'gasPay',{from: accounts[0]});
-    }).then(function() {
-		var user=User[accounts[0]];
-		var chan=user.channels['gasPay'];
-	  return chan.value;
-    }).then(function(balance) {
-      assert.equal(balance, 123,"Initialized incorrectly");
+    }).then(function(string) {
+      assert.equal(balance, 'name',"Initialized incorrectly");
     });
   });  
   

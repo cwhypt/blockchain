@@ -25,7 +25,7 @@ contract Channel {
 		value=0;
 	}
 
-	function openChannel(string _name, address _to, uint _timeout) payable { 
+	function openChannel(string _name, address _to, uint _timeout) payable returns (unit){ 
 		//address to, uint timeout
 		name=_name;
 		to=new address[](1);
@@ -35,6 +35,7 @@ contract Channel {
 		startDate = now;
 		channelTimeout = _timeout;   //remember to verify
 		value=0;
+		return name;
 	}
 
 	function CloseChannel(bytes32 h, uint8 v, bytes32 r, bytes32 s, uint value){

@@ -44,7 +44,7 @@ contract Wallet{
 //        voters[toVoter].weight = 1;
 //    }
 	
-	function send(address _to,uint _value) public {
+	function send(address _to,uint _value) payable {
 		User[msg.sender].value-=_value;
 		User[_to].value+=_value;
 	}
