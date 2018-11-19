@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 contract Channel {
-	string _name;
+	string public _name;
     address public _from;   // local address
     address[] public _to;
     uint startDate;
