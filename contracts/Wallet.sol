@@ -48,7 +48,7 @@ contract Wallet{
 		User[msg.sender].value-=_value;
 		User[_to].value+=_value;
 	}
-    function openChannel(address _with,uint _channelTimeout,string _name) payable returns() {
+    function openChannel(address _with,uint _channelTimeout,string _name) payable {
        channelUser openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
         Channel newChannel = new Channel;
 		newChannel.name=_name;
