@@ -17,6 +17,7 @@ contract Channel {
 	function Channel()  { 
 		//
 		name='undef';
+		to=new address[](1);
 		to[0] = msg.sender;
 		from = msg.sender;
 		startDate = now;
