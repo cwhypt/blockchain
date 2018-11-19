@@ -14,17 +14,7 @@ contract('wallet', function(accounts) {
     });
   });
   
-  it("check the initialization of mappings", function() {
-    var wal;
 
-    return wallet.deployed().then(function(instance) {
-      wal = instance;
-      return wal.getChannel.call('test');
-    }).then(function(name) {
-      assert.notEqual(name, 'test',"Initialized incorrectly");
-    });
-  });
-  
   it("Start two and three account", function() {
     var wal;
 
