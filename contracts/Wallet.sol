@@ -51,12 +51,7 @@ contract Wallet{
     function openChannel(address _with,uint _channelTimeout,string _name) payable {
        channelUser openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
         Channel newChannel = new Channel();
-		newChannel.name=_name;
-        newChannel.from=msg.sender;
-        newChannel.to=_with;
-        newChannel.startDate=now;
-        newChannel.channelTimeout=_channelTimeout;
-        newChannel.value=123;   
+		newChannel.openChannel(_name,_with,_channelTimeout);
 		openUser.channels[_name]=newChannel;
     //function setFeed(InfoFeed addr) public { feed = addr; }
     //function callFeed() public { feed.info.value(10).gas(800)(); }

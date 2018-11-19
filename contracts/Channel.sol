@@ -11,12 +11,22 @@ contract Channel {
 	mapping (bytes32 => address) signatures;
 	
 	function Channel() payable { 
-		//address to, uint timeout
+		//
 		name='undef';
 		to = msg.sender;
 		from = msg.sender;
 		startDate = now;
 		channelTimeout = now;
+		value=0;
+	}
+
+	function openChannel(string _name. address _to, uint _timeout) payable { 
+		//address to, uint timeout
+		name=_name;
+		to = _to;
+		from = msg.sender;
+		startDate = now;
+		channelTimeout = _timeout;   //remember to verify
 		value=0;
 	}
 
