@@ -20,7 +20,7 @@ contract Channel {
 		value=0;
 	}
 
-	function openChannel(string _name. address _to, uint _timeout) payable { 
+	function openChannel(string _name, address _to, uint _timeout) payable { 
 		//address to, uint timeout
 		name=_name;
 		to = _to;
