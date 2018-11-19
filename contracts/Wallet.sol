@@ -35,7 +35,8 @@ contract Wallet{
 	
     function getChannel(string _nameref) public view returns(string) {  
 		channelUser user=User[msg.sender];
-        return (user.channels[_nameref])._name;
+		Channel ch0=user.channels[_nameref];
+        return ch0.name;
     }
 
 //    function giveRightToVote(address toVoter) public {
@@ -50,9 +51,9 @@ contract Wallet{
     function openChannel(address _with,uint _channelTimeout,string _name) payable {
        channelUser openUser = User[msg.sender];   //here it requires initiateUser (on both sides?)
         Channel newChannel = openUser.channels[_name];
-		newChannel._name=_name;
-        newChannel._from=msg.sender;
-        newChannel._to=_with;
+		newChannel.name=_name;
+        newChannel.from=msg.sender;
+        newChannel.to=_with;
         newChannel.startDate=now;
         newChannel.channelTimeout=_channelTimeout;
         newChannel.value=123;   
