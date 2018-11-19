@@ -29,7 +29,7 @@ contract Channel {
 		signer = ecrecover(h, v, r, s);
 
 		// signature is invalid, throw
-		if (signer != _from && signer != _to) throw;
+		if (signer != from && signer != to) throw;
 
 		proof = sha3(this, value);
 
@@ -41,7 +41,7 @@ contract Channel {
 		else if (signatures[proof] != signer){
 			// channel completed, both signatures provided
 			//if (!_to.send(value)) throw; Remember to send value !!!
-			selfdestruct(_from);
+			selfdestruct(from);
 		}
 
 	}
@@ -50,7 +50,7 @@ contract Channel {
 		if (startDate + channelTimeout > now)
 			throw;
 
-		selfdestruct(_from);
+		selfdestruct(from);
 	}
 
 }
