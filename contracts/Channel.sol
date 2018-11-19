@@ -27,6 +27,7 @@ contract Channel {
 	function openChannel(string _name, address _to, uint _timeout) payable { 
 		//address to, uint timeout
 		name=_name;
+		to=new address[](1);
 		to[0] = _to;
 		from = msg.sender;
 		startDate = now;
