@@ -37,7 +37,7 @@ contract Channel {
 			signatures[proof] = signer;
 		else if (signatures[proof] != signer){
 			// channel completed, both signatures provided
-			if (!_to.send(value)) throw;
+			//if (!_to.send(value)) throw; Remember to send value !!!
 			selfdestruct(_from);
 		}
 
