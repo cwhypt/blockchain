@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
 
 contract Channel {
-	string public name;
-    address public from;   // local address
-    address[] public to;
+	string  name;
+    address  from;   // local address
+    address[]  to;
     uint startDate;
 	uint channelTimeout;
 	uint value; //accumulated value to be sent
