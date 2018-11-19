@@ -20,7 +20,7 @@ contract Wallet{
         User[moderator].value = 100;
     }
     
-	function initiateUser() public view {
+	function initiateUser() public {
         channelUser storage sendUser=User[msg.sender];
         sendUser.value=10;   //maybe initiate is not useful; exist when called
         
