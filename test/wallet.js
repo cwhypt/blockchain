@@ -23,7 +23,7 @@ contract('wallet', function(accounts) {
       return wal.initiateUser({from: accounts[1]});
     }).then(function() {
       wal.initiateUser({from: accounts[2]});
-	  return wal.getValue.call(accounts[1]);
+	  return wal.getValue.call(accounts[0]);
     }).then(function(balance) {
       assert.equal(balance.valueOf(), 10,"Initialized incorrectly");
     });
