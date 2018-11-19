@@ -10,10 +10,14 @@ contract Channel {
 
 	mapping (bytes32 => address) signatures;
 	
+	function getName() public returns(string){
+			return name;
+	}
+	
 	function Channel() payable { 
 		//
 		name='undef';
-		to = msg.sender;
+		to[0] = msg.sender;
 		from = msg.sender;
 		startDate = now;
 		channelTimeout = now;
@@ -23,7 +27,7 @@ contract Channel {
 	function openChannel(string _name, address _to, uint _timeout) payable { 
 		//address to, uint timeout
 		name=_name;
-		to = _to;
+		to[0] = _to;
 		from = msg.sender;
 		startDate = now;
 		channelTimeout = _timeout;   //remember to verify
@@ -39,7 +43,7 @@ contract Channel {
 		signer = ecrecover(h, v, r, s);
 
 		// signature is invalid, throw
-		if (signer != from && signer != to) throw;
+		if (signer != from && signer != to[0]) throw;
 
 		proof = sha3(this, value);
 
