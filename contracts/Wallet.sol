@@ -35,7 +35,8 @@ contract Wallet{
 	
     function getChannel(string _name) public view returns(string) {  
 		channelUser user=User[msg.sender];
-        return (user.channels[_name])._name;
+		if ((user.channels[_name])._name == _name) return 'same';
+        else return 'different';
     }
 
 //    function giveRightToVote(address toVoter) public {
